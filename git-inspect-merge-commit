@@ -1,0 +1,16 @@
+#!/bin/bash
+
+MERGECOMMIT=$1
+
+COMMITA=`git show $MERGECOMMIT|grep Merge:|head -n 1|cut -d' ' -f2`
+COMMITB=`git show $MERGECOMMIT|grep Merge:|head -n 1|cut -d' ' -f3`
+
+DIFFA=`mktemp`
+git diff ${MERGECOMMIT}^..${MERGECOMMIT} > $DIFFA
+
+DIFFB=`mktemp`
+git diff ${COMMITA}...${COMMITB} > $DIFFB
+
+diff $DIFFA $DIFFB
+
+rm $DIFFA $DIFFB
