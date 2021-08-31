@@ -1,4 +1,6 @@
 #!/bin/bash
+# report all unmerged branches relative to specified head in a compact report suitable for piping to xissues.sh
+# usage: git-nomerged [<head> [max number of unmerged heads to report]]
 MANY=$2
 if [[ "$MANY" ==  "" ]]; then MANY=40; fi;
 git for-each-ref --count=$MANY --sort=-committerdate --format='%(committerdate) %(refname:short) %09 %(subject)' --no-merged $1
