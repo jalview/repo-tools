@@ -1,0 +1,4 @@
+#!/bin/bash
+MANY=$2
+if [[ "$MANY" ==  "" ]]; then MANY=40; fi;
+git for-each-ref --count=$MANY --sort=-committerdate --format='%(committerdate) %(refname:short) %09 %(subject)' --no-merged $1
