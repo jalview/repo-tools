@@ -1,4 +1,6 @@
 #!/usr/bin/perl 
+# reports all unique JAL-... issue keys as a CSV 
+# 
 use strict;
 my %issues=();
 while (<>) {
